@@ -21,10 +21,13 @@ export class Login extends React.Component {
     await self.setState({isFailed : false});
     axios({
       method: "post",
-      url: "https://localhost:44366/api/Auth/login",
+      url: "",
       data: {
         username: this.state.username,
         password: this.state.password
+      },
+      headers :{
+        'Access-Control-Allow-Origin' :'*'
       }
     })
       .then(function(response) {

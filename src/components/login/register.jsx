@@ -53,7 +53,7 @@ export class Register extends React.Component {
   callValidateApi = (prop, value) => {
     const seft = this;
     axios
-      .get("https://localhost:44322/api/WebOwner/check", {
+      .get("", {
         params: {
           [prop]: value
         }
@@ -63,12 +63,12 @@ export class Register extends React.Component {
         let data = response.data;
         if (data.type === "ERROR") {
           if (prop === "username") {
-            seft.state.usernameMessage = data.nameMessage;
+            seft.state.usernameMessage = data.name_message;
             seft.setState({ isnameValid: false });
           }
 
           if (prop === "email") {
-            seft.state.emailMessage = data.emailMessage;
+            seft.state.emailMessage = data.email_message;
             seft.setState({ isEmailValid: false });
           }
         } else {
@@ -110,12 +110,12 @@ export class Register extends React.Component {
     const seft = this;
     axios({
       method: "post",
-      url: "https://localhost:44322/api/WebOwner",
+      url: "",
       data: {
-        Username: this.state.username,
-        Email: this.state.email,
-        FullName: this.state.fullname,
-        Password: this.state.password,
+        username: this.state.username,
+        email: this.state.email,
+        fullName: this.state.fullname,
+        password: this.state.password,
         WebUrl: this.state.firstSide
       }
     })
